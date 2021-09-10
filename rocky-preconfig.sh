@@ -52,10 +52,8 @@ EOF
 	return 0
 }
 
-update_system() {
+setup_45drives_repo() {
     local res
-    echo "Updating System"
-    
     #Install 45Drives Repository
     echo "Downloading 45Drives Repo Setup Script"
     curl -sSL https://repo.45drives.com/setup -o setup-repo.sh
@@ -216,7 +214,7 @@ case $progress in
 		;& # fallthrough
 	0)
 		echo "################################################################################"
-		update_system
+		setup_45drives_repo
 		echo 1 > .rocky-preconfig.progress
 		;&
 
