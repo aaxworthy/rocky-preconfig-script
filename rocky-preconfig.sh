@@ -109,23 +109,23 @@ install_zfs() {
 
     res=$?
     if [[ $res != 0 ]]; then 
-        echo "ZFS/kernel-devel install failed!"
+        echo "ZFS/kernel-devel install failed"
         exit $res
     fi
 
-    echo "Setting up zfs.conf"
+    echo "Setting ZFS to load on boot"
     echo zfs > /etc/modules-load.d/zfs.conf
     res=$?
     if [[ $res != 0 ]]; then
-        echo "zfs.conf not found!"
+        echo "Step Failed"
         exit $res
     fi
 
-    echo "resing for ZFS modules!"
+    echo "Loading ZFS"
     modprobe zfs
     res=$?
     if [[ $res != 0 ]]; then 
-        echo "modprobe command not found!"
+        echo "Load ZFS Manually Failed"
         exit $res
     fi
 
